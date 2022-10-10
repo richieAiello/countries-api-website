@@ -42,3 +42,22 @@
   font-size: 0.875rem;
   line-height: 1rem;
 }
+
+.container {
+  width: min(100% - 2rem, 375px);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 689px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+/* Provide xl media for 2k screens */

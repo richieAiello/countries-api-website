@@ -11,7 +11,12 @@ module.exports = {
       lg: '1440px',
     },
     extend: {
-      // colors: {},
+      colors: {
+        'blue-grey-light': '#2B3844',
+        'blue-grey-dark': '#202C36',
+        grey: '#FAFAFA',
+        'black-light': '#111517',
+      },
     },
   },
   plugins: [],

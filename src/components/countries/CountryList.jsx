@@ -16,6 +16,7 @@ const CountryList = ({ data, error }) => {
                 population={item.population.toLocaleString()}
                 region={item.region}
                 capital={item.capital ? item.capital[0] : 'None'}
+                code={item.cca3}
               />
             );
           })}

@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import useSWR from 'swr';
-import axios from 'axios';
+import useCountry from '../hooks/useCountry';
 
 // Retrieve data for selected Country
 // Display selected Country info
@@ -11,29 +10,25 @@ import axios from 'axios';
 
 // swr with full-name provided by link
 // endpoint: https://restcountries.com/v3.1/name/{name}?fullText=true
+
+// useState to toggle whether or not to seach by country code?
 const CountryInfo = props => {
   const location = useLocation();
-  const country = location.pathname.slice(9);
+  const countryCode = location.pathname.slice(9);
 
-  const fetcher = url => axios.get(url).then(res => res.data);
+  const { country, isLoading, isError } = useCountry(countryCode);
 
-  const { data, error } = useSWR(
-    `https://restcountries.com/v3.1/name/${country}?fullText=true`,
-    fetcher
-  );
-
-  // console.log(data);
-  // console.log(endpoint);
+  console.log(country);
 
   return (
     <>
-      {error && <div>Request Failed. Please try again.</div>}
-      {!data && <div>Loading...</div>}
+      {isError && <div>Request Failed. Please try again.</div>}
+      {isLoading && <div>Loading...</div>}
       <Link to="/" className="block">
         Back
       </Link>
       <div className="">
-        <img src={data?.[0]?.flags.png} alt="" className="" />
+        <img src={country.flags?.png} alt="" className="" />
         <div className="">
           <h2 className=""></h2>
           <p className="">
@@ -63,7 +58,20 @@ const CountryInfo = props => {
           <h3 className=""></h3>
           {/* container for Border Country Links. */}
           {/* map through border countries array and spawn Links */}
-          <div></div>
+          <div>
+            {country &&
+              country.borders?.map(item => {
+                return (
+                  <Link
+                    to={`/country/${item}`}
+                    key={item}
+                    className="pr-2 pt-4"
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
+          </div>
         </div>
       </div>
     </>

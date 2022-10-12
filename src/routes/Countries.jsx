@@ -13,7 +13,11 @@ const Countries = props => {
   // data ? console.log(data) : console.log('No Data');
   console.log(data);
 
-  return <CountryList data={data} error={error} />;
+  return (
+    <div className="container">
+      <CountryList data={data} error={error} />
+    </div>
+  );
 };
 
 export default Countries;

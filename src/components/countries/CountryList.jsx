@@ -6,7 +6,7 @@ const CountryList = ({ data, error }) => {
       {error && <div>Request Failed. Please try again.</div>}
       {!data && <div>Loading...</div>}
       {data?.length && (
-        <ul className="grid gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid justify-items-center gap-y-10 md:grid-cols-2 md:gap-y-16 lg:grid-cols-4 lg:gap-[4.6875rem]">
           {data.map(item => {
             return (
               <CountryCard

@@ -21,7 +21,7 @@ const CountryInfo = props => {
   console.log(country);
 
   return (
-    <>
+    <main className="container">
       {isError && <div>Request Failed. Please try again.</div>}
       {isLoading && <div>Loading...</div>}
       <Link to="/" className="block">
@@ -59,22 +59,21 @@ const CountryInfo = props => {
           {/* container for Border Country Links. */}
           {/* map through border countries array and spawn Links */}
           <div>
-            {country &&
-              country.borders?.map(item => {
-                return (
-                  <Link
-                    to={`/country/${item}`}
-                    key={item}
-                    className="pr-2 pt-4"
-                  >
-                    {item}
-                  </Link>
-                );
-              })}
+            {country.borders?.map(border => {
+              return (
+                <Link
+                  to={`/country/${border}`}
+                  key={border}
+                  className="pr-2 pt-4"
+                >
+                  {border}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

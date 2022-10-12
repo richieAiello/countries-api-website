@@ -12,10 +12,14 @@ const CountryCard = ({
 }) => {
   return (
     <li
-      className="shadow-md rounded-md bg-[#f5f5f5] text-black-light dark:bg-blue-grey-light dark:text-white 
-      w-[min(100%,264px)] justify-self-center"
+      className="shadow-lg rounded-md bg-white text-black-light dark:bg-blue-grey-light dark:text-white 
+      w-[min(100%,264px)] h-[336px]"
     >
-      <img src={flag} alt="" className="w-full h-40 rounded-t-md" />
+      <img
+        src={flag}
+        alt=""
+        className="w-full h-40 rounded-t-md shadow"
+      />
       <div className="pt-6 pb-12 pl-6 pr-6">
         <h2 className="">{name}</h2>
         <p className="mb-2">

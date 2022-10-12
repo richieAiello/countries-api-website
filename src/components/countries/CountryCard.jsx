@@ -1,6 +1,10 @@
+import { Link } from 'react-router-dom';
+// import { useRef } from 'react';
+
+// Turn each card into a cliackable link leading towards that countries info page.
 const CountryCard = ({ flag, name, population, region, capital }) => {
   return (
-    <div
+    <li
       className="shadow-md rounded-md bg-[#f5f5f5] text-black-light dark:bg-blue-grey-light dark:text-white 
       w-[min(100%,264px)] justify-self-center"
     >
@@ -19,8 +23,9 @@ const CountryCard = ({ flag, name, population, region, capital }) => {
           <span className="font-semibold">Capital: </span>
           {capital}
         </p>
+        <Link to={`/country/${name}`}>link</Link>
       </div>
-    </div>
+    </li>
   );
 };
 

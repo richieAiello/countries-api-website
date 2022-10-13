@@ -9,9 +9,7 @@ const App = () => {
     <>
       <Header />
       <main className="bg-grey dark:bg-blue-grey-dark min-h-[calc(100vh-5rem)]">
-        <div className="container">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
     </>
   );

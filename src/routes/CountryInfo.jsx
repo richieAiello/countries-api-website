@@ -21,41 +21,56 @@ const CountryInfo = props => {
   console.log(country);
 
   return (
-    <main className="container">
+    <div className="container pt-10">
       {isError && <div>Request Failed. Please try again.</div>}
       {isLoading && <div>Loading...</div>}
-      <Link to="/" className="block">
+      <Link to="/" className="block mb-16">
         Back
       </Link>
       <div className="">
-        <img src={country.flags?.png} alt="" className="" />
+        <img
+          src={country.flags?.png}
+          alt=""
+          className="w-[min(100%,320px)] h-[min(auto,229px)] rounded-md mb-11 shadow-md"
+        />
         <div className="">
-          <h2 className=""></h2>
+          <h2 className="">{country.name?.common ?? 'Unknown'}</h2>
           <p className="">
-            <span className=""></span>
+            <span className="">Native Name: </span>
+            {Object.values(country.name?.nativeName ?? {})[0]
+              ?.official ?? 'Unknown'}
           </p>
           <p className="">
-            <span className=""></span>
+            <span className="">Population: </span>
+            {country.population?.toLocaleString() ?? 'Unknown'}
           </p>
           <p className="">
-            <span className=""></span>
+            <span className="">Region: </span>
+            {country.region ?? 'Unknown'}
           </p>
           <p className="">
-            <span className=""></span>
+            <span className="">Sub Region: </span>
+            {country.subregion ?? 'Unknown'}
           </p>
           <p className="">
-            <span className=""></span>
+            <span className="">Capital: </span>
+            {country.capital?.[0] ?? 'Unknown'}
           </p>
           <p className="">
-            <span className=""></span>
+            <span className="">Top Level Domain: </span>
+            {country.tld?.[0] ?? 'Unknown'}
           </p>
           <p className="">
-            <span className=""></span>
+            <span className="">Currencies: </span>
+            {Object.values(country.currencies ?? {})[0]?.name ??
+              'Unknown'}
           </p>
           <p className="">
-            <span className=""></span>
+            <span className="">Languages: </span>
+            {Object.values(country.languages ?? {}).join(', ') ??
+              'Unknown'}
           </p>
-          <h3 className=""></h3>
+          <h3 className="">Border Countries:</h3>
           {/* container for Border Country Links. */}
           {/* map through border countries array and spawn Links */}
           <div>
@@ -69,11 +84,11 @@ const CountryInfo = props => {
                   {border}
                 </Link>
               );
-            })}
+            }) ?? 'None'}
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

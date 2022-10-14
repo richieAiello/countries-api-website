@@ -22,6 +22,7 @@ const Countries = props => {
   // Can cause an infinite loop if error persists. Seek other solution.
   // error && setEndpoint('https://restcountries.com/v3.1/all');
 
+  // Accepts a ref and accesses ref.current after mount with useEffect
   useObserver(stickyRef);
 
   // console.log(data);
@@ -30,7 +31,7 @@ const Countries = props => {
     <>
       <div
         ref={stickyRef}
-        className="sticky -top-[1px] bg-grey pt-8 duration-300"
+        className="sticky top-[-1px] bg-grey pt-12 duration-300"
       >
         <div className="container">
           <div className="flex justify-between">

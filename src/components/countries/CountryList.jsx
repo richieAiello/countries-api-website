@@ -12,7 +12,7 @@ const CountryList = ({ data, error }) => {
               <CountryCard
                 key={item.name.official}
                 flag={item.flags.png}
-                name={item.name.official}
+                name={item.name.common}
                 population={item.population.toLocaleString()}
                 region={item.region}
                 capital={item.capital ? item.capital[0] : 'None'}

@@ -15,6 +15,7 @@ const useObserver = ref => {
     };
 
     const oberverOptions = {
+      root: null,
       threshold: 1.0,
     };
 

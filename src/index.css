@@ -73,6 +73,15 @@
 .sticky-search {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0562);
+  z-index: 10;
+  padding-top: 2rem !important;
+}
+/* Apply dark mode styles for icons. Classes are directly on svg paths. */
+/* .icon__search {
+  fill: #1b1d23;
 }
 
+.icon__region {
+  fill: red;
+} */
 /* Provide xl media for 2k screens */

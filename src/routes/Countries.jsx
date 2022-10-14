@@ -1,13 +1,11 @@
 import useSWR from 'swr';
 import axios from 'axios';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
+import useObserver from '../hooks/useObserver';
 import CountryRegion from '../components/countries/CountryRegion';
 import CountrySearch from '../components/countries/CountrySearch';
 import CountryList from '../components/countries/CountryList';
 
-// Store endpoint state for Search Bar and Region DropDown Here
-// Set conditions to reset value or region when search bar is used.
-// Maybe lift up handle change fucntions for this as well
 const Countries = props => {
   const [endpoint, setEndpoint] = useState(
     'https://restcountries.com/v3.1/all'
@@ -21,35 +19,11 @@ const Countries = props => {
 
   const { data, error } = useSWR(endpoint, fetcher);
 
-  error && setEndpoint('https://restcountries.com/v3.1/all');
+  // Can cause an infinite loop if error persists. Seek other solution.
+  // error && setEndpoint('https://restcountries.com/v3.1/all');
 
-  // https://css-tricks.com/how-to-detect-when-a-sticky-element-gets-pinned/
-  // https://davidwalsh.name/detect-sticky
-  useEffect(() => {
-    const observerCallback = entriesList => {
-      const entry = entriesList[0];
-      entry.target.classList.toggle(
-        'sticky-search',
-        !entry.isIntersecting
-      );
-      console.log(entry.isIntersecting);
-    };
+  useObserver(stickyRef);
 
-    const oberverOptions = {
-      threshold: 1.0,
-    };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      oberverOptions
-    );
-
-    observer.observe(stickyRef.current);
-
-    return () => observer.disconnect();
-  }, []);
-
-  // data ? console.log(data) : console.log('No Data');
   // console.log(data);
 
   return (

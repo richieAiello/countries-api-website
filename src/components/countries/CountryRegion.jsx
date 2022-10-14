@@ -1,21 +1,20 @@
-import { useState } from 'react';
-
-const CountryRegion = ({ setState }) => {
-  // Move this to parent to clear on searchbar search
-  const [region, setRegion] = useState('');
-
+const CountryRegion = ({
+  setEndpoint,
+  setRegionValue,
+  regionValue,
+}) => {
   const handleChange = e => {
-    setRegion(e.target.value);
+    setRegionValue(e.target.value);
 
     e.target.value
-      ? setState(
+      ? setEndpoint(
           `https://restcountries.com/v3.1/region/${e.target.value}`
         )
-      : setState('https://restcountries.com/v3.1/all');
+      : setEndpoint('https://restcountries.com/v3.1/all');
   };
 
   return (
-    <select name="region" value={region} onChange={handleChange}>
+    <select name="region" value={regionValue} onChange={handleChange}>
       <option value="">All Regions</option>
       <option value="africa">Africa</option>
       <option value="america">America</option>

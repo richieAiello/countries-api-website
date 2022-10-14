@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import axios from 'axios';
 
-const useCountry = countryCode => {
+const useCountryCode = countryCode => {
   const fetcher = url => axios.get(url).then(res => res.data);
 
   const { data, error } = useSWR(
@@ -16,4 +16,4 @@ const useCountry = countryCode => {
   };
 };
 
-export default useCountry;
+export default useCountryCode;

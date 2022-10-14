@@ -43,6 +43,16 @@
   line-height: 1rem;
 }
 
+.ninja {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+}
+
 .container {
   width: min(100% - 2rem, 375px);
   margin-inline: auto;
@@ -58,6 +68,11 @@
   .container {
     width: 1280px;
   }
+}
+
+.sticky-search {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0562);
 }
 
 /* Provide xl media for 2k screens */

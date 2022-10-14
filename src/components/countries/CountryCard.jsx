@@ -18,7 +18,7 @@ const CountryCard = ({
       <img
         src={flag}
         alt=""
-        className="w-full h-40 rounded-t-md shadow"
+        className="w-full h-40 rounded-t-md shadow object-cover"
       />
       <div className="pt-6 pb-12 pl-6 pr-6">
         <h2 className="">{name}</h2>

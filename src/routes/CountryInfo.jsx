@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import useCountry from '../hooks/useCountry';
+import useCountryCode from '../hooks/useCountryCode';
 
 // Retrieve data for selected Country
 // Display selected Country info
@@ -16,7 +16,7 @@ const CountryInfo = props => {
   const location = useLocation();
   const countryCode = location.pathname.slice(9);
 
-  const { country, isLoading, isError } = useCountry(countryCode);
+  const { country, isLoading, isError } = useCountryCode(countryCode);
 
   console.log(country);
 

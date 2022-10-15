@@ -11,6 +11,7 @@ const Countries = props => {
     'https://restcountries.com/v3.1/all'
   );
   const [searchValue, setSearchValue] = useState('');
+  const [searchStyles, setSearchStyles] = useState(true);
   const [regionValue, setRegionValue] = useState('');
 
   const stickyRef = useRef(null);
@@ -23,7 +24,7 @@ const Countries = props => {
   // error && setEndpoint('https://restcountries.com/v3.1/all');
 
   // Accepts a ref and accesses ref.current after mount with useEffect
-  useObserver(stickyRef);
+  useObserver(stickyRef, setSearchStyles, searchStyles);
 
   // console.log(data);
 
@@ -31,24 +32,26 @@ const Countries = props => {
     <>
       <div
         ref={stickyRef}
-        className="sticky top-[-1px] bg-grey pt-12 duration-300"
+        className="sticky top-[-1px] pt-12 duration-300"
       >
         <div className="container">
-          <div className="flex justify-between">
+          <div className="flex flex-col items-center md:flex-row md:justify-between">
             <CountrySearch
               setEndpoint={setEndpoint}
               setSearchValue={setSearchValue}
               searchValue={searchValue}
               setRegionValue={setRegionValue}
+              searchStyles={searchStyles}
             />
             <CountryRegion
               setEndpoint={setEndpoint}
               setRegionValue={setRegionValue}
               regionValue={regionValue}
+              searchStyles={searchStyles}
             />
           </div>
           {data && !error && (
-            <h2 className="pt-2 pb-4 text-lg font-semibold text-center">
+            <h2 className="pt-3 pb-3 text-lg font-semibold text-center md:text-left">
               Results: {data.length} countries
             </h2>
           )}

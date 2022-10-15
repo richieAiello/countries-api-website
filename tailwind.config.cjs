@@ -16,6 +16,8 @@ module.exports = {
         'blue-grey-dark': '#202C36',
         grey: '#FAFAFA',
         'black-light': '#111517',
+        'glow-dark': 'rgba(0, 0, 0, 0.0562)',
+        'glow-light': 'rgba(255,255,255,.25)',
       },
       boxShadow: {
         DEFAULT: '0 2px 4px rgba(0, 0, 0, 0.0562)',

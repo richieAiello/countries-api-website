@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 // https://css-tricks.com/how-to-detect-when-a-sticky-element-gets-pinned/
 // https://davidwalsh.name/detect-sticky
 // Provide comments
-const useObserver = ref => {
+// Control stick-search with lifted state
+const useObserver = (ref, setState, state) => {
   useEffect(() => {
     const observerCallback = entriesList => {
       const entry = entriesList[0];
@@ -11,7 +12,7 @@ const useObserver = ref => {
         'sticky-search',
         !entry.isIntersecting
       );
-      console.log(entry.isIntersecting);
+      entry.isIntersecting ? setState(true) : setState(false);
     };
 
     const oberverOptions = {
@@ -26,8 +27,10 @@ const useObserver = ref => {
 
     observer.observe(ref.current);
 
+    console.log(state);
+
     return () => observer.disconnect();
-  }, []);
+  }, [state]);
 };
 
 export default useObserver;

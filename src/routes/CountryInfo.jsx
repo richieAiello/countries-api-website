@@ -16,7 +16,9 @@ const CountryInfo = props => {
       {isLoading && <div>Loading...</div>}
       <Link
         to="/"
-        className="mb-16 inline-flex items-center justify-center h-10 w-36 bg-white text-[1rem] leading-5 rounded-md"
+        className="icon-link mb-16 inline-flex items-center justify-center h-10 w-36 bg-white text-[1rem] 
+        leading-5 rounded-md duration-300 hover:bg-blue-grey-light hover:text-white shadow-md
+        dark:bg-blue-grey-light dark:shadow-md dark:shadow-[rgba(255,255,255,.2)] hover:dark:bg-white hover:dark:text-black-light"
       >
         <LeftArrow className="w-4 mr-[0.625rem]" />
         Home
@@ -81,7 +83,7 @@ const CountryInfo = props => {
             </a>
           </div>
           <div className="flex flex-col md:flex-row md:col-span-2">
-            <h3 className="text-base font-bold mb-4 w-[20ch] md:mr-6">
+            <h3 className="text-base font-bold mb-4 w-[20ch] md:mr-4">
               Border Countries:
             </h3>
             {/* Make responsive */}
@@ -93,6 +95,7 @@ const CountryInfo = props => {
                     key={border}
                     className="h-7 w-24 inline-flex items-center justify-center bg-white text-center text-[12px]
                     rounded-sm shadow-[0_0_4px_1px_rgba(0,0,0,0.1049)] font-bold duration-300 
+                    dark:bg-blue-grey-light dark:shadow-white dark:hover:shadow-[rgba(0,0,0,0.1049)]
                     hover:bg-blue-grey-light hover:text-white dark:hover:text-black-light dark:hover:bg-white
                     focus:bg-blue-grey-light focus:text-white dark:focus:text-black-light dark:focus:bg-white"
                   >

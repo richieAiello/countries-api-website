@@ -1,10 +1,12 @@
 import { ReactComponent as SearchIcon } from '../../assets/search.svg';
+import clsx from 'clsx';
 
 const CountrySearch = ({
   setEndpoint,
   searchValue,
   setSearchValue,
   setRegionValue,
+  searchStyles,
 }) => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,6 +20,8 @@ const CountrySearch = ({
   };
 
   // Not sure if this needs to be a form. Try with just state, input and onChange
+  // Use clsx to change styles of inputs when isIntersecting is false
+  // Maybe use props for this?
   return (
     <form
       onSubmit={handleSubmit}
@@ -31,13 +35,18 @@ const CountrySearch = ({
         name="search"
         type="text"
         placeholder="Search for a country..."
-        className="pl-14 w-full h-14 rounded-md shadow-md leading-5 bg-white dark:bg-blue-grey-light dark:text-white"
+        className={`pl-14 w-full h-10 md:h-14 rounded-md shadow-md shadow-glow-dark dark:shadow-glow-light 
+          leading-5 bg-white dark:bg-blue-grey-light mb-3 md:mb-0
+          ${clsx({
+            'sticky-search__input': !searchStyles,
+          })}
+        `}
         value={searchValue}
         onChange={e => setSearchValue(e.target.value)}
       />
       <button
         type="submit"
-        className="absolute top-0 bottom-0 left-0 pl-4 pr-4"
+        className="absolute top-0 h-10 md:h-14 left-0 pl-4 pr-4"
       >
         <SearchIcon className="inline w-4" />
       </button>

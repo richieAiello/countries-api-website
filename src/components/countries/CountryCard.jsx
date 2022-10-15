@@ -15,7 +15,7 @@ const CountryCard = ({
   // Fix max length of card title
   return (
     <li
-      className="shadow-lg rounded-md bg-white text-black-light dark:bg-blue-grey-light dark:text-white 
+      className="shadow-md shadow-glow-dark dark:shadow-glow-light rounded-md bg-white text-black-light dark:bg-blue-grey-light dark:text-white 
       w-[min(100%,264px)] h-[336px] text-[0.875rem] leading-4 font-normal cursor-pointer duration-100  
       hover:scale-105 focus:scale-105"
       onClick={e => linkRef.current.click()}
@@ -25,7 +25,7 @@ const CountryCard = ({
       <img
         src={flag}
         alt=""
-        className="w-full h-40 rounded-t-md shadow object-cover"
+        className="w-full h-40 rounded-t-md shadow dark:shadow-glow-light object-cover"
       />
       <div className="pt-6 pb-12 pl-6 pr-6">
         <h2 className="text-[1.125rem] leading-[1.625rem] font-extrabold mb-4">

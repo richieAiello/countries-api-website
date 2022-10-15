@@ -8,7 +8,8 @@ const App = () => {
   return (
     <>
       <Header />
-      <main className="bg-grey dark:bg-blue-grey-dark min-h-[calc(100vh-5rem)]">
+      {/* min-h-[calc(100vh-5rem)] */}
+      <main className="pb-12">
         <Outlet />
       </main>
     </>

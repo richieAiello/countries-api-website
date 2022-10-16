@@ -2,11 +2,19 @@ import CountryCard from './CountryCard';
 
 const CountryList = ({ data, error }) => {
   return (
-    <>
-      {error && <div>Request Failed.</div>}
-      {!data && !error && <div>Loading...</div>}
+    <div className="container">
+      {error && (
+        <p className="text-3xl text-center mt-20">
+          Request failed! Please search again.
+        </p>
+      )}
+      {!data && !error && (
+        <p className="text-3xl text-center mt-20">
+          Loading Countries...
+        </p>
+      )}
       {data?.length && (
-        <ul className="container grid justify-items-center gap-y-10 md:grid-cols-2 md:gap-y-16 lg:grid-cols-4 lg:gap-[4.6875rem]">
+        <ul className="grid justify-items-center gap-y-10 md:grid-cols-2 md:gap-y-16 lg:grid-cols-4 lg:gap-[4.6875rem]">
           {data.map(item => {
             return (
               <CountryCard
@@ -22,7 +30,7 @@ const CountryList = ({ data, error }) => {
           })}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 

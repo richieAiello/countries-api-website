@@ -51,21 +51,51 @@ const Countries = props => {
               setRegionValue={setRegionValue}
               stickyStyles={stickyStyles}
             />
-            <CountryRegion
-              setEndpoint={setEndpoint}
-              setRegionValue={setRegionValue}
-              regionValue={regionValue}
-              stickyStyles={stickyStyles}
-            />
+            <div className="flex gap-x-4">
+              <button
+                type="button"
+                aria-label="Search all countries."
+                onClick={() => {
+                  setEndpoint('https://restcountries.com/v3.1/all');
+                  setRegionValue('');
+                  setSearchValue('');
+                }}
+                className={`px-6 rounded-md shadow-md dark:shadow-glow-light duration-300
+                hover:bg-blue-grey-light hover:text-white dark:hover:bg-white dark:hover:text-black-light
+                ${clsx({
+                  'bg-white': !stickyStyles,
+                  'dark:bg-blue-grey-light': !stickyStyles,
+                  'bg-grey': stickyStyles,
+                  'dark:bg-blue-grey-dark': stickyStyles,
+                })}`}
+              >
+                All
+              </button>
+              <CountryRegion
+                setEndpoint={setEndpoint}
+                setRegionValue={setRegionValue}
+                regionValue={regionValue}
+                stickyStyles={stickyStyles}
+              />
+            </div>
           </div>
           {data && !error && (
             <h2 className="pt-3 pb-3 text-lg font-semibold text-center md:text-left">
-              Results: {data.length} countries
+              Results: {data.length} countries in{' '}
+              {regionValue
+                ? regionValue[0].toUpperCase() +
+                  regionValue.substring(1) +
+                  '!'
+                : 'the world!'}
             </h2>
           )}
         </div>
       </div>
-      <CountryList data={data} error={error} />
+      <CountryList
+        setEndpoint={setEndpoint}
+        data={data}
+        error={error}
+      />
     </>
   );
 };

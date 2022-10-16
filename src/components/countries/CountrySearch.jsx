@@ -25,7 +25,7 @@ const CountrySearch = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative w-[min(100%,480px)]"
+      className="relative w-full md:w-[380px] lg:w-[480px]"
     >
       <label htmlFor="search" className="ninja">
         Search Countries
@@ -34,7 +34,7 @@ const CountrySearch = ({
         id="search"
         name="search"
         type="text"
-        placeholder="Search for a country..."
+        placeholder="Search countries by name..."
         className={`pl-14 w-full h-10 md:h-14 rounded-md shadow-md shadow-glow-dark dark:shadow-glow-light 
           leading-5 mb-3 md:mb-0
           ${clsx({

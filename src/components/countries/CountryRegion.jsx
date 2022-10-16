@@ -14,16 +14,16 @@ const CountryRegion = ({
       ? setEndpoint(
           `https://restcountries.com/v3.1/region/${e.target.value}`
         )
-      : setEndpoint('https://restcountries.com/v3.1/all');
+      : null;
   };
 
   return (
-    <div className="relative rounded-md shadow-md w-[200px] shadow-glow-dark dark:shadow-glow-light">
+    <div className="relative rounded-md shadow-md w-[min(100%,200px)] shadow-glow-dark dark:shadow-glow-light">
       <select
         name="region"
         value={regionValue}
         onChange={handleChange}
-        className={`relative h-10 md:h-14 w-full pl-6 pr-6 cursor-pointer rounded-md
+        className={`relative h-10 md:h-14 w-full pr-6 pl-2 cursor-pointer rounded-md sm:pl-6
           ${clsx({
             'bg-white': !stickyStyles,
             'dark:bg-blue-grey-light': !stickyStyles,
@@ -32,7 +32,9 @@ const CountryRegion = ({
           })}
          `}
       >
-        <option value="">All Regions</option>
+        <option disabled value="">
+          Filter by Region
+        </option>
         <option value="africa">Africa</option>
         <option value="america">America</option>
         <option value="asia">Asia</option>

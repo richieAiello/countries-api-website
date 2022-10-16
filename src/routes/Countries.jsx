@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import axios from 'axios';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import useObserver from '../hooks/useObserver';
 import CountryRegion from '../components/countries/CountryRegion';
 import CountrySearch from '../components/countries/CountrySearch';
@@ -25,6 +25,13 @@ const Countries = props => {
 
   // Accepts a ref and accesses ref.current after mount with useEffect
   useObserver(stickyRef, setSearchStyles, searchStyles);
+
+  useEffect(() => {
+    // const root = document.getElementById('html');
+    // console.log(root);
+    // document.documentElement.classList.remove('dark');
+    // console.log(document.documentElement);
+  }, []);
 
   // console.log(data);
 

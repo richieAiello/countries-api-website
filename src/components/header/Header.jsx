@@ -1,3 +1,5 @@
+import Toggle from './Toggle';
+
 const Header = props => {
   return (
     // box-shadow: 0px 2px 4px 0px #0000000E
@@ -9,8 +11,7 @@ const Header = props => {
         <h1 className="text-[0.875rem] leading-5 font-extrabold">
           Where in the world?
         </h1>
-        <p className="">toggle</p>
-        {/* Also displayed light/dark mode toggle button */}
+        <Toggle />
       </div>
     </header>
   );

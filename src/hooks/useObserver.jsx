@@ -27,8 +27,6 @@ const useObserver = (ref, setState, state) => {
 
     observer.observe(ref.current);
 
-    console.log(state);
-
     return () => observer.disconnect();
   }, [state]);
 };

@@ -5,7 +5,7 @@ const CountryRegion = ({
   setEndpoint,
   setRegionValue,
   regionValue,
-  searchStyles,
+  stickyStyles,
 }) => {
   const handleChange = e => {
     setRegionValue(e.target.value);
@@ -23,11 +23,13 @@ const CountryRegion = ({
         name="region"
         value={regionValue}
         onChange={handleChange}
-        className={`relative h-10 md:h-14 w-full pl-6 pr-6 cursor-pointer rounded-md bg-white
-         dark:bg-blue-grey-light dark:text-white
-         ${clsx({
-           'sticky-search__input': !searchStyles,
-         })}
+        className={`relative h-10 md:h-14 w-full pl-6 pr-6 cursor-pointer rounded-md
+          ${clsx({
+            'bg-white': !stickyStyles,
+            'dark:bg-blue-grey-light': !stickyStyles,
+            'bg-grey': stickyStyles,
+            'dark:bg-blue-grey-dark': stickyStyles,
+          })}
          `}
       >
         <option value="">All Regions</option>
@@ -38,14 +40,17 @@ const CountryRegion = ({
         <option value="oceania">Oceania</option>
       </select>
       <span
-        className={`block absolute bg-white dark:bg-blue-grey-light h-10 md:h-14
+        className={`block absolute h-10 md:h-14
         w-8 top-0 right-0 rounded-md pointer-events-none
-        ${clsx({
-          'sticky-search__input--secondary': !searchStyles,
-        })}
+          ${clsx({
+            'bg-white': !stickyStyles,
+            'dark:bg-blue-grey-light': !stickyStyles,
+            'bg-grey': stickyStyles,
+            'dark:bg-blue-grey-dark': stickyStyles,
+          })}
         `}
       >
-        <Arrow className="w-3 inline absolute top-0 bottom-0 my-auto right-4" />
+        <Arrow className="fill-black-light dark:fill-white w-3 inline absolute top-0 bottom-0 my-auto right-4" />
       </span>
     </div>
   );

@@ -8,17 +8,22 @@ const CountryInfo = props => {
 
   const { country, isLoading, isError } = useCountryCode(countryCode);
 
-  console.log(country);
+  // console.log(country);
 
+  // Break this down into smaller components
   return (
     <div className="container pt-10">
       {isError && <div>Request Failed. Please try again.</div>}
       {isLoading && <div>Loading...</div>}
       <Link
         to="/"
-        className="icon-link mb-16 inline-flex items-center justify-center h-10 w-36 bg-white text-[1rem] 
-        leading-5 rounded-md duration-300 hover:bg-blue-grey-light hover:text-white shadow-md
-        dark:bg-blue-grey-light dark:shadow-md dark:shadow-[rgba(255,255,255,.2)] hover:dark:bg-white hover:dark:text-black-light"
+        className="mb-16 inline-flex items-center justify-center h-10 w-36 bg-white text-[1rem] 
+        leading-5 rounded-md duration-300  shadow-md fill-black-light 
+        dark:fill-white dark:bg-blue-grey-light dark:shadow-glow-light 
+        hover:text-white hover:bg-blue-grey-light hover:fill-white
+        hover:dark:bg-white hover:dark:text-black-light hover:dark:fill-black-light
+        focus:text-white focus:bg-blue-grey-light focus:fill-white
+        focus:dark:bg-white focus:dark:text-black-light focus:dark:fill-black-light"
       >
         <LeftArrow className="w-4 mr-[0.625rem]" />
         Home
@@ -86,7 +91,6 @@ const CountryInfo = props => {
             <h3 className="text-base font-bold mb-4 w-[20ch] md:mr-4">
               Border Countries:
             </h3>
-            {/* Make responsive */}
             <div className="flex flex-wrap gap-x-3 gap-y-4">
               {country.borders?.map(border => {
                 return (

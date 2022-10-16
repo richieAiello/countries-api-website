@@ -6,7 +6,7 @@ const CountrySearch = ({
   searchValue,
   setSearchValue,
   setRegionValue,
-  searchStyles,
+  stickyStyles,
 }) => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -36,9 +36,12 @@ const CountrySearch = ({
         type="text"
         placeholder="Search for a country..."
         className={`pl-14 w-full h-10 md:h-14 rounded-md shadow-md shadow-glow-dark dark:shadow-glow-light 
-          leading-5 bg-white dark:bg-blue-grey-light mb-3 md:mb-0
+          leading-5 mb-3 md:mb-0
           ${clsx({
-            'sticky-search__input': !searchStyles,
+            'bg-white': !stickyStyles,
+            'dark:bg-blue-grey-light': !stickyStyles,
+            'bg-grey': stickyStyles,
+            'dark:bg-blue-grey-dark': stickyStyles,
           })}
         `}
         value={searchValue}
@@ -46,9 +49,9 @@ const CountrySearch = ({
       />
       <button
         type="submit"
-        className="absolute top-0 h-10 md:h-14 left-0 pl-4 pr-4"
+        className="absolute top-0 h-10 md:h-14 left-0 pl-4 pr-4 duration-300"
       >
-        <SearchIcon className="inline w-4" />
+        <SearchIcon className="fill-black-light dark:fill-white inline w-4" />
       </button>
     </form>
   );

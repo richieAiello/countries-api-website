@@ -53,6 +53,11 @@
   position: absolute;
 }
 
+.icon {
+  transition: inherit;
+  fill: inherit;
+}
+
 .container {
   width: min(100% - 2rem, 375px);
   margin-inline: auto;
@@ -69,60 +74,3 @@
     width: 1280px;
   }
 }
-
-.sticky-search {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0562);
-  z-index: 10;
-  padding-top: 2rem !important;
-}
-
-.sticky-search__input,
-.sticky-search__input--secondary {
-  background-color: #fafafa;
-}
-
-/* .sticky-search__input {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-} */
-
-.icon {
-  transition: all 300ms;
-}
-
-.icon-link:hover .icon {
-  fill: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  .sticky-search {
-    background-color: #2b3844;
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.25);
-  }
-
-  .sticky-search__input,
-  .sticky-search__input--secondary {
-    background-color: #202c36 !important;
-  }
-
-  /* .sticky-search__input {
-    box-shadow: 3px 3px 2px 4px rgba(255, 255, 255, 0.25);
-  } */
-
-  .icon-link:hover .icon {
-    fill: #1b1d23;
-  }
-
-  .icon {
-    fill: #fff;
-  }
-}
-/* Apply dark mode styles for icons. Classes are directly on svg paths. */
-/* .icon__search {
-  fill: #1b1d23;
-}
-
-.icon__region {
-  fill: red;
-} */
-/* Provide xl media for 2k screens */

@@ -3,16 +3,11 @@ import { useEffect } from 'react';
 // https://css-tricks.com/how-to-detect-when-a-sticky-element-gets-pinned/
 // https://davidwalsh.name/detect-sticky
 // Provide comments
-// Control stick-search with lifted state
 const useObserver = (ref, setState, state) => {
   useEffect(() => {
     const observerCallback = entriesList => {
       const entry = entriesList[0];
-      entry.target.classList.toggle(
-        'sticky-search',
-        !entry.isIntersecting
-      );
-      entry.isIntersecting ? setState(true) : setState(false);
+      !entry.isIntersecting ? setState(true) : setState(false);
     };
 
     const oberverOptions = {

@@ -1,7 +1,8 @@
 import useSWR from 'swr';
 import axios from 'axios';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import useObserver from '../hooks/useObserver';
+import clsx from 'clsx';
 import CountryRegion from '../components/countries/CountryRegion';
 import CountrySearch from '../components/countries/CountrySearch';
 import CountryList from '../components/countries/CountryList';
@@ -11,8 +12,8 @@ const Countries = props => {
     'https://restcountries.com/v3.1/all'
   );
   const [searchValue, setSearchValue] = useState('');
-  const [searchStyles, setSearchStyles] = useState(true);
   const [regionValue, setRegionValue] = useState('');
+  const [stickyStyles, setStickyStyles] = useState(false);
 
   const stickyRef = useRef(null);
 
@@ -24,22 +25,22 @@ const Countries = props => {
   // error && setEndpoint('https://restcountries.com/v3.1/all');
 
   // Accepts a ref and accesses ref.current after mount with useEffect
-  useObserver(stickyRef, setSearchStyles, searchStyles);
-
-  useEffect(() => {
-    // const root = document.getElementById('html');
-    // console.log(root);
-    // document.documentElement.classList.remove('dark');
-    // console.log(document.documentElement);
-  }, []);
-
-  // console.log(data);
+  useObserver(stickyRef, setStickyStyles, stickyStyles);
 
   return (
     <>
       <div
         ref={stickyRef}
-        className="sticky top-[-1px] pt-12 duration-300"
+        className={`sticky top-[-1px] pt-12 duration-300 dark:shadow-glow-light z-10
+          ${clsx({
+            'pt-12': !stickyStyles,
+            'pt-8': stickyStyles,
+            shadow: stickyStyles,
+            'bg-transparent': !stickyStyles,
+            'bg-white': stickyStyles,
+            'dark:bg-blue-grey-light': stickyStyles,
+          })}
+        `}
       >
         <div className="container">
           <div className="flex flex-col items-center md:flex-row md:justify-between">
@@ -48,13 +49,13 @@ const Countries = props => {
               setSearchValue={setSearchValue}
               searchValue={searchValue}
               setRegionValue={setRegionValue}
-              searchStyles={searchStyles}
+              stickyStyles={stickyStyles}
             />
             <CountryRegion
               setEndpoint={setEndpoint}
               setRegionValue={setRegionValue}
               regionValue={regionValue}
-              searchStyles={searchStyles}
+              stickyStyles={stickyStyles}
             />
           </div>
           {data && !error && (

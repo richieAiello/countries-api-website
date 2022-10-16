@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
+import { ReactComponent as Light } from '../../assets/light.svg';
+import { ReactComponent as Dark } from '../../assets/dark.svg';
 
-// Work with local storage to toggle light and dark mode
-// If HTML element in index.html has a class="dark" tailwind will use dark styles
-// Create state for darkMode based on local storage (refer to audiophile AppContext)
-// Use lazy initial state to determine the initial boolean of darkMode state
-// If local storage theme doesn't exist setDarkMode(false)
-// If dark HTMl element should receive class="dark"
-// If light remove class from HTML
 const Toggle = props => {
-  // lift darKMode state up so sticky-search can change based on dark mode when scrolling down
   const [darkMode, setDarkMode] = useState(() => {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
@@ -20,9 +14,22 @@ const Toggle = props => {
   }, [darkMode]);
 
   return (
-    // Conditionally render icons based on darkMode state
-    <button type="button" onClick={() => setDarkMode(!darkMode)}>
-      Click to toggle
+    <button
+      type="button"
+      className="flex items-center"
+      onClick={() => setDarkMode(!darkMode)}
+    >
+      {!darkMode ? (
+        <>
+          <Dark className="fill-black-light w-5 mr-3" />
+          <span className="text-base">Dark Mode</span>
+        </>
+      ) : (
+        <>
+          <Light className="fill-white w-6 mr-3" />
+          <span className="text-base">Light Mode</span>
+        </>
+      )}
     </button>
   );
 };

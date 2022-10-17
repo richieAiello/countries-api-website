@@ -7,6 +7,7 @@ const CountrySearch = ({
   setSearchValue,
   setRegionValue,
   stickyStyles,
+  setSearchResults,
 }) => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -15,6 +16,11 @@ const CountrySearch = ({
           `https://restcountries.com/v3.1/name/${searchValue}`
         )
       : setEndpoint('https://restcountries.com/v3.1/all');
+    searchValue
+      ? setSearchResults(
+          ` countries found while searching '${searchValue}'!`
+        )
+      : setSearchResults(' countries in the world!');
     setSearchValue('');
     setRegionValue('');
   };

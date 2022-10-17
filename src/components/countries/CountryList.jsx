@@ -3,7 +3,7 @@ import CountryCard from './CountryCard';
 const CountryList = ({ data, error }) => {
   return (
     <div className="container">
-      {error && (
+      {!data && error && (
         <p className="text-3xl text-center mt-20">
           Request failed! Please search again.
         </p>

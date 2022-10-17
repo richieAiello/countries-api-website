@@ -6,15 +6,19 @@ const CountryRegion = ({
   setRegionValue,
   regionValue,
   stickyStyles,
+  setSearchResults,
 }) => {
   const handleChange = e => {
-    setRegionValue(e.target.value);
-
-    e.target.value
-      ? setEndpoint(
-          `https://restcountries.com/v3.1/region/${e.target.value}`
-        )
-      : null;
+    const region = e.target.value;
+    setRegionValue(region);
+    region &&
+      setEndpoint(`https://restcountries.com/v3.1/region/${region}`);
+    region &&
+      setSearchResults(
+        ` countries in ${region[0].toUpperCase()}${region.substring(
+          1
+        )}!`
+      );
   };
 
   return (

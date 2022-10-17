@@ -14,15 +14,15 @@ const Countries = props => {
   const [searchValue, setSearchValue] = useState('');
   const [regionValue, setRegionValue] = useState('');
   const [stickyStyles, setStickyStyles] = useState(false);
+  const [searchResults, setSearchResults] = useState(
+    ' countries in the world!'
+  );
 
   const stickyRef = useRef(null);
 
   const fetcher = url => axios.get(url).then(res => res.data);
 
   const { data, error } = useSWR(endpoint, fetcher);
-
-  // Can cause an infinite loop if error persists. Seek other solution.
-  // error && setEndpoint('https://restcountries.com/v3.1/all');
 
   // Accepts a ref and accesses ref.current after mount with useEffect
   useObserver(stickyRef, setStickyStyles, stickyStyles);
@@ -50,6 +50,7 @@ const Countries = props => {
               searchValue={searchValue}
               setRegionValue={setRegionValue}
               stickyStyles={stickyStyles}
+              setSearchResults={setSearchResults}
             />
             <div className="flex gap-x-4">
               <button
@@ -57,6 +58,7 @@ const Countries = props => {
                 aria-label="Search all countries."
                 onClick={() => {
                   setEndpoint('https://restcountries.com/v3.1/all');
+                  setSearchResults(' countries in the world!');
                   setRegionValue('');
                   setSearchValue('');
                 }}
@@ -76,26 +78,24 @@ const Countries = props => {
                 setRegionValue={setRegionValue}
                 regionValue={regionValue}
                 stickyStyles={stickyStyles}
+                setSearchResults={setSearchResults}
               />
             </div>
           </div>
           {data && !error && (
             <h2 className="pt-3 pb-3 text-lg font-semibold text-center md:text-left">
-              Results: {data.length} countries in{' '}
-              {regionValue
+              Search Results: {data.length.toLocaleString()}
+              {searchResults}
+              {/* {regionValue
                 ? regionValue[0].toUpperCase() +
                   regionValue.substring(1) +
                   '!'
-                : 'the world!'}
+                : 'the world!'} */}
             </h2>
           )}
         </div>
       </div>
-      <CountryList
-        setEndpoint={setEndpoint}
-        data={data}
-        error={error}
-      />
+      <CountryList data={data} error={error} />
     </>
   );
 };

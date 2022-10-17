@@ -16,9 +16,10 @@ const Toggle = props => {
   return (
     <button
       type="button"
-      className="flex items-center rounded-md duration-300 shadow-glow-dark dark:shadow-glow-light
-      hover:p-3 hover:shadow-md hover:border-black-light dark:hover:border-white hover:border-[1px]
-      focus:p-3 focus:shadow-md focus:border-black-light dark:focus:border-white focus:border-[1px]"
+      className="flex items-center rounded-md duration-150 shadow-glow-dark dark:shadow-glow-light
+      outline-black-light dark:outline-white outline-2
+      hover:p-3 hover:shadow-md hover:outline
+      focus:p-3 focus:shadow-md focus:outline"
       onClick={() => setDarkMode(!darkMode)}
     >
       {!darkMode ? (

@@ -42,7 +42,7 @@ const CountrySearch = ({
         type="text"
         placeholder="Search countries by name..."
         className={`pl-14 w-full h-10 md:h-14 rounded-md shadow-md shadow-glow-dark dark:shadow-glow-light 
-          leading-5 mb-3 md:mb-0
+          leading-5 mb-3 md:mb-0 outline-black-light dark:outline-white outline-2 hover:outline focus:outline
           ${clsx({
             'bg-white': !stickyStyles,
             'dark:bg-blue-grey-light': !stickyStyles,
@@ -56,6 +56,7 @@ const CountrySearch = ({
       <button
         type="submit"
         className="absolute top-0 h-10 md:h-14 left-0 pl-4 pr-4 duration-300"
+        tabIndex="-1"
       >
         <SearchIcon className="fill-black-light dark:fill-white inline w-4" />
       </button>

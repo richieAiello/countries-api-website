@@ -16,7 +16,7 @@ const CountryCard = ({
   return (
     <li
       className="shadow-md shadow-glow-dark dark:shadow-glow-light rounded-md bg-white text-black-light dark:bg-blue-grey-light dark:text-white 
-      w-[min(100%,264px)] h-[336px] text-[0.875rem] leading-4 font-normal cursor-pointer duration-100  
+      w-[min(100%,264px)] h-[336px] text-[0.875rem] leading-4 font-normal cursor-pointer duration-100 dark:outline-white  
       hover:scale-105 focus:scale-105"
       onClick={e => linkRef.current.click()}
       onKeyDown={e => e.code === 'Enter' && linkRef.current.click()}

@@ -22,12 +22,13 @@ const CountryRegion = ({
   };
 
   return (
-    <div className="relative rounded-md shadow-md w-[min(100%,200px)] shadow-glow-dark dark:shadow-glow-light">
+    <div className="relative rounded-md shadow-md w-[min(100%,200px)] shadow-glow-dark dark:shadow-glow-light focus:outline-red-600">
       <select
         name="region"
         value={regionValue}
         onChange={handleChange}
         className={`relative h-10 md:h-14 w-full pr-6 pl-2 cursor-pointer rounded-md sm:pl-6
+        outline-black-light dark:outline-white outline-2 hover:outline focus:outline
           ${clsx({
             'bg-white': !stickyStyles,
             'dark:bg-blue-grey-light': !stickyStyles,

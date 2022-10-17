@@ -43,7 +43,7 @@ const Countries = props => {
         `}
       >
         <div className="container">
-          <div className="flex flex-col items-center md:flex-row md:justify-between">
+          <div className="pb-3 flex flex-col items-center md:flex-row md:justify-between">
             <CountrySearch
               setEndpoint={setEndpoint}
               setSearchValue={setSearchValue}
@@ -62,8 +62,8 @@ const Countries = props => {
                   setRegionValue('');
                   setSearchValue('');
                 }}
-                className={`px-6 rounded-md shadow-md dark:shadow-glow-light duration-300
-                hover:bg-blue-grey-light hover:text-white dark:hover:bg-white dark:hover:text-black-light
+                className={`px-6 rounded-md shadow-md dark:shadow-glow-light
+                outline-black-light dark:outline-white outline-2 hover:outline focus:outline
                 ${clsx({
                   'bg-white': !stickyStyles,
                   'dark:bg-blue-grey-light': !stickyStyles,
@@ -83,7 +83,7 @@ const Countries = props => {
             </div>
           </div>
           {data && !error && (
-            <h2 className="pt-3 pb-3 text-lg font-semibold text-center md:text-left">
+            <h2 className="pb-3 text-lg font-semibold text-center md:text-left">
               Search Results: {data.length.toLocaleString()}
               {searchResults}
               {/* {regionValue

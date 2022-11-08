@@ -28,7 +28,7 @@ const CountryRegion = ({
         value={regionValue}
         onChange={handleChange}
         className={`relative h-10 md:h-14 w-full pr-10 pl-4 cursor-pointer rounded-md appearance-none 
-        sm:pl-6 sm:pr-12 outline-black-light dark:outline-white outline-2 hover:outline focus:outline 
+        sm:pl-6 outline-black-light dark:outline-white outline-2 hover:outline focus:outline 
           ${clsx({
             'bg-white': !stickyStyles,
             'dark:bg-blue-grey-light': !stickyStyles,
@@ -46,19 +46,7 @@ const CountryRegion = ({
         <option value="europe">Europe</option>
         <option value="oceania">Oceania</option>
       </select>
-      <span
-        className={`block absolute h-10 md:h-14
-        w-8 top-0 right-0 rounded-md pointer-events-none
-          ${clsx({
-            'bg-white': !stickyStyles,
-            'dark:bg-blue-grey-light': !stickyStyles,
-            'bg-grey': stickyStyles,
-            'dark:bg-blue-grey-dark': stickyStyles,
-          })}
-        `}
-      >
-        <Arrow className="fill-black-light dark:fill-white w-3 inline absolute top-0 bottom-0 my-auto right-4" />
-      </span>
+      <Arrow className="fill-black-light dark:fill-white w-3 inline absolute top-0 bottom-0 my-auto right-4" />
     </div>
   );
 };

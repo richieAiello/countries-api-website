@@ -27,8 +27,8 @@ const CountryRegion = ({
         name="region"
         value={regionValue}
         onChange={handleChange}
-        className={`relative h-10 md:h-14 w-full pr-6 pl-2 cursor-pointer rounded-md sm:pl-6
-        outline-black-light dark:outline-white outline-2 hover:outline focus:outline
+        className={`relative h-10 md:h-14 w-full pr-10 pl-4 cursor-pointer rounded-md appearance-none 
+        sm:pl-6 sm:pr-12 outline-black-light dark:outline-white outline-2 hover:outline focus:outline 
           ${clsx({
             'bg-white': !stickyStyles,
             'dark:bg-blue-grey-light': !stickyStyles,
